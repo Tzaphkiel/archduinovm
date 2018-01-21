@@ -56,6 +56,7 @@ gpasswd -a $USER lock
 sudo gpasswd -a $USER staff
 sudo gpasswd -a $USER lock
 sudo gpasswd -a $USER uucp
+sudo gpasswd -a $USER vboxsf
 stty -F /dev/ttyACM0 cs8 9600 ignbrk -brkint -imaxbel -opost -onlcr -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke noflsh -ixon -crtscts
 # just in case
 pip install pyserial
@@ -65,3 +66,16 @@ mkdir ~/bin
 ln -s /usr/bin/colorgcc ~/bin/avr-gcc
 ln -s /usr/bin/colorgcc ~/bin/avr-g++
 # add to .bashrc: PATH=${HOME}/bin:${PATH}
+
+# prepare vbox share
+sudo mkdir /mnt/share
+cd /home/$USER
+ln -s /mnt/share
+touch mountshare.sh
+echo "sudo mount -t vboxsf vboxsf share" >> mountshare.sh
+chmod +x mountshare.sh
+
+
+
+
+
