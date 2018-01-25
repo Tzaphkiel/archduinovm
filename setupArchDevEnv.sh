@@ -1,3 +1,6 @@
+export HOST_NAME=my-new-vm
+export HOST_IP=100
+
 # update system
 sudo pacman -Syuu
 sudo reboot
@@ -74,6 +77,18 @@ ln -s /mnt/share
 touch mountshare.sh
 echo "sudo mount -t vboxsf vboxsf share" >> mountshare.sh
 chmod +x mountshare.sh
+
+# set the individual hostname
+sudo hostnamectl set-hostname $HOST_NAME
+
+# add a 'vboxnet' internal network to Virtualbox network as a second adaptor
+# set it up in Arch using systemd-networkd
+# create a /etc/systemd/network/50-vboxnet.network file and fill it in with appropriate static ip conf
+sudo touch /etc/systemd/network/50-vboxnet.network
+sudo echo "[Match]\nName=enp0s8\n\n[Network]\nAddress=10.1.10.$HOST_IP/24\nGateway=10.1.10.1\nDNS=10.1.10.1" >> /etc/systemd/network/50-vboxnet.network
+sudo systemctl restart systemd.networkd
+# check with networkctl cmd
+
 
 
 
