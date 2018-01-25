@@ -86,7 +86,7 @@ sudo hostnamectl set-hostname $HOST_NAME
 # create a /etc/systemd/network/50-vboxnet.network file and fill it in with appropriate static ip conf
 sudo touch /etc/systemd/network/50-vboxnet.network
 sudo echo "[Match]\nName=enp0s8\n\n[Network]\nAddress=10.1.10.$HOST_IP/24\nGateway=10.1.10.1\nDNS=10.1.10.1" >> /etc/systemd/network/50-vboxnet.network
-sudo systemctl restart systemd.networkd
+sudo systemctl restart systemd-networkd.service
 # check with networkctl cmd
 
 
