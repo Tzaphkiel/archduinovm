@@ -101,6 +101,11 @@ Post installation steps:
 ```sh
 $ useradd -m -G wheel leroyse
 $ passwd leroyse
+
+# allow sudo from new user
+$ vim /etc/sudoers
+
+# add line : leroyse ALL=(ALL) ALL
 ```
 
 
