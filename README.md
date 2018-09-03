@@ -109,6 +109,13 @@ $ vim /etc/sudoers
 $ logout
 
 # log back in as leroyse
+
+# identify ether interface
+$ ip link
+
+# enable dhcp on it (change interface here!)
+$ sudo systemctl enable dhcpcd@ens33
+
 $ sudo pacman -S zsh
 $ chsh -s /bin/zsh
 $ logout
