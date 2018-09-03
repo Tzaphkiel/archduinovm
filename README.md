@@ -106,6 +106,12 @@ $ passwd leroyse
 $ vim /etc/sudoers
 
 # add line : leroyse ALL=(ALL) ALL
+$ logout
+
+# log back in as leroyse
+$ sudo pacman -S zsh
+$ chsh -s /bin/zsh
+$ logout
 ```
 
 
